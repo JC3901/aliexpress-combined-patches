@@ -34,12 +34,14 @@ sponsored items) are left out so two patches never fight over the same feature.
 
 ## Releasing a new version
 
-1. Bump `version` in `gradle.properties` and run `./gradlew :patches:generatePatchesList`.
-2. Create a GitHub release `v<version>` with `patches/build/libs/patches-<version>.mpp` attached as
-   `aliexpress-combined-patches-<version>.mpp`.
-3. Update `version`, `download_url` and `created_at` in `patches-bundle.json` and push to `main`.
-   Morphe Manager reads this file to find updates. The bundle is unsigned, so the file must not
-   declare a `public_key`.
+No GitHub release is needed: Morphe Manager reads `patches-bundle.json` on `main` and downloads
+the bundle straight from the `bundles/` folder.
+
+1. Bump `version` in `gradle.properties`, then run `./gradlew :patches:generatePatchesList`.
+2. Copy `patches/build/libs/patches-<version>.mpp` to `bundles/aliexpress-combined-patches-<version>.mpp`.
+3. Update `version`, `download_url` and `created_at` in `patches-bundle.json`, then push to `main`.
+   Everyone who added the source gets the update in Manager. The bundle is unsigned, so the file
+   must not declare a `public_key`.
 
 ## Build
 
