@@ -15,6 +15,7 @@ private val gmsCoreSupportMarkerPatch = bytecodePatch {
 
     execute {
         markPatchApplied("gmsCoreSupport", checkNotNull(gmsCoreSupportPatch.description))
+        routeGooglePayToGooglePlayServices()
     }
 }
 
