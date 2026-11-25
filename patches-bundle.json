@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-11-25T14:00:00",
-  "description": "## 1.0.0 (2026-11-25)\n\nFirst release: 15 patches for AliExpress 8.180.1, combined from hxreborn, johninnld and mben25, plus a new **Skip bundle deals** patch.",
-  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.0.mpp",
-  "version": "1.0.0"
+  "created_at": "2026-11-25T15:40:00",
+  "description": "## 1.0.1 (2026-11-25)\n\n### Bug fixes\n\n* Morphe Manager showed 0 patches: 1.0.0 was built without the Android (dex) code Manager needs. All 15 patches now load.",
+  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.1.mpp",
+  "version": "1.0.1"
 }

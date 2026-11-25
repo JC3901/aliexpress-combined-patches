@@ -74,7 +74,9 @@ switched on and off in the app.
 Morphe Manager reads `patches-bundle.json` on `main` and downloads the bundle from the `releases/` folder, so
 no GitHub release is needed.
 
-1. Bump `version` in `gradle.properties` and run `./gradlew :patches:generatePatchesList`.
+1. Bump `version` in `gradle.properties` and run `./gradlew :patches:buildAndroid :patches:generatePatchesList`.
+   Use `buildAndroid`, not `build`: only it adds the `classes.dex` that Morphe Manager needs on a phone.
+   A bundle without it loads 0 patches.
 2. Copy `patches/build/libs/patches-<version>.mpp` to `releases/patches-<version>.mpp`.
 3. Update `version`, `download_url`, `created_at` and `description` in `patches-bundle.json` and push to
    `main`. Everyone who added the source gets the update in Morphe Manager. The bundle is unsigned, so the file
@@ -84,7 +86,7 @@ no GitHub release is needed.
 
 Needs JDK 21 and the Android SDK (`local.properties` -> `sdk.dir=...`).
 
-    ./gradlew :patches:build                 # -> patches/build/libs/patches-<version>.mpp
+    ./gradlew :patches:buildAndroid          # -> patches/build/libs/patches-<version>.mpp
     ./gradlew :patches:applyToApk -Papk=/path/to/aliexpress-8.180.1.apk   # try every patch on an APK
 
 ## Licence
