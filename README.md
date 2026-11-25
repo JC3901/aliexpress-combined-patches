@@ -1,5 +1,11 @@
 # AliExpress combined Morphe patches (8.180.1)
 
+[![Add to Morphe](https://img.shields.io/badge/Add%20to-Morphe-1E5AA8?style=for-the-badge)](https://morphe.software/add-source?github=JC3901/aliexpress-combined-patches&name=AliExpress%20Combined)
+
+Tap the button on an Android phone with Morphe Manager installed to add this bundle as a patch
+source. Or add `https://github.com/JC3901/aliexpress-combined-patches` as a remote source by hand.
+Then patch AliExpress **8.180.1** (versionCode 80005998).
+
 One patch bundle for AliExpress 8.180.1 (versionCode 80005998), combining:
 
 | Patch | Source |
@@ -25,6 +31,15 @@ sponsored items) are left out so two patches never fight over the same feature.
   `/ssr/300000512/...` or `...BundleDeals...` pages that carry a product ID (`productIds`,
   `productId` or `pid`) open `/item/<id>.html` instead. Bundle pages without a product ID
   are left alone.
+
+## Releasing a new version
+
+1. Bump `version` in `gradle.properties` and run `./gradlew :patches:generatePatchesList`.
+2. Create a GitHub release `v<version>` with `patches/build/libs/patches-<version>.mpp` attached as
+   `aliexpress-combined-patches-<version>.mpp`.
+3. Update `version`, `download_url` and `created_at` in `patches-bundle.json` and push to `main`.
+   Morphe Manager reads this file to find updates. The bundle is unsigned, so the file must not
+   declare a `public_key`.
 
 ## Build
 
