@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-11-25T15:45:00",
-  "description": "## 1.0.2 (2026-11-25)\n\n### Bug fixes\n\n* Morphe Manager showed 0 patches: earlier bundles were built without the Android (dex) code Manager needs. All 15 patches now load.",
-  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.2.mpp",
-  "version": "1.0.2"
+  "created_at": "2026-11-25T16:00:00",
+  "description": "## 1.0.3 (2026-11-25)\n\n### Bug fixes\n\n* Patching failed with \"AliExpress coupon floor counters not found\" on some 8.180.1 builds. Remove coupons popup, Block marketing pop-up layers, Disable promotions notifications, Remove affiliate tracking and Skip bundle deals now skip themselves with a warning when their code isn't in the APK, instead of stopping the whole patching run.",
+  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.3.mpp",
+  "version": "1.0.3"
 }
