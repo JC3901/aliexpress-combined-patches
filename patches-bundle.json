@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-11-25T16:05:00",
-  "description": "## 1.0.4 (2026-11-25)\n\n### Bug fixes\n\n* Patching failed with \"AliExpress coupon floor counters not found\" on some 8.180.1 builds. Remove coupons popup, Block marketing pop-up layers, Disable promotions notifications, Remove affiliate tracking and Skip bundle deals now skip themselves with a warning when their code isn't in the APK, instead of stopping the whole patching run.\n* 1.0.3 loaded 0 patches (it was missing its Android code); replaced by this version.",
-  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.4.mpp",
-  "version": "1.0.4"
+  "created_at": "2026-11-25T16:40:00",
+  "description": "## 1.0.5 (2026-11-25)\n\n### Bug fixes\n\n* Google Pay didn't work at checkout: GmsCore support sent Google Pay to MicroG-RE, whose Google Pay service always says \"not ready to pay\". Google Pay now goes to the phone's own Google Play services; everything else still uses MicroG-RE.",
+  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.5.mpp",
+  "version": "1.0.5"
 }

@@ -19,7 +19,8 @@ They:
 - **block update prompts**;
 - **let you save product images**;
 - **fix dark mode**;
-- **sign in with Google through MicroG-RE**;
+- **sign in with Google through MicroG-RE**, while **Google Pay** keeps using your phone's own Google Play
+  services (MicroG-RE can't take payments);
 - **a Patches screen inside the app** with a switch for most of these, so you can turn one off without patching
   again.
 
