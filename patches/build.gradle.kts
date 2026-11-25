@@ -29,8 +29,10 @@ tasks.register<JavaExec>("generatePatchesList") {
 }
 tasks.named("javadoc") { enabled = false }
 
+// Test-applies a bundle to an APK. Pass -Pmpp=<bundle>; it does not rebuild the bundle, so running
+// it never replaces the buildAndroid output (with classes.dex) by a plain jar.
 tasks.register<JavaExec>("applyToApk") {
-    dependsOn(tasks.named("jar"))
+    dependsOn(tasks.named("testClasses"))
     classpath = sourceSets["test"].runtimeClasspath
     mainClass.set("harness.HarnessKt")
     maxHeapSize = "6g"
