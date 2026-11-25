@@ -47,3 +47,6 @@ tasks.register<JavaExec>("applyToApk") {
 tasks.matching { it.name == "buildAndroid" }.configureEach {
     mustRunAfter("build", "generatePatchesList")
 }
+
+// src/test only holds the applyToApk harness, not unit tests.
+tasks.named<Test>("test") { failOnNoDiscoveredTests = false }
