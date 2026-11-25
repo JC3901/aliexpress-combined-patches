@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-11-25T16:40:00",
-  "description": "## 1.0.5 (2026-11-25)\n\n### Bug fixes\n\n* Google Pay didn't work at checkout: GmsCore support sent Google Pay to MicroG-RE, whose Google Pay service always says \"not ready to pay\". Google Pay now goes to the phone's own Google Play services; everything else still uses MicroG-RE.",
-  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.5.mpp",
-  "version": "1.0.5"
+  "created_at": "2026-11-25T16:55:00",
+  "description": "## 1.0.6 (2026-11-25)\n\n### Bug fixes\n\n* Google Pay didn't work at checkout: GmsCore support sent Google Pay to MicroG-RE, whose Google Pay service always says \"not ready to pay\". Google Pay now goes to the phone's own Google Play services; everything else still uses MicroG-RE.",
+  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/1b14001f3693a2378bb34cac3a6e6a5b35d8af29/releases/patches-1.0.6.mpp",
+  "version": "1.0.6"
 }

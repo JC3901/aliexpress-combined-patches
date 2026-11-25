@@ -75,13 +75,18 @@ switched on and off in the app.
 Morphe Manager reads `patches-bundle.json` on `main` and downloads the bundle from the `releases/` folder, so
 no GitHub release is needed.
 
-1. Bump `version` in `gradle.properties` and run `./gradlew :patches:buildAndroid :patches:generatePatchesList`.
-   Use `buildAndroid`, not `build`: only it adds the `classes.dex` that Morphe Manager needs on a phone.
-   A bundle without it loads 0 patches.
-2. Copy `patches/build/libs/patches-<version>.mpp` to `releases/patches-<version>.mpp`.
-3. Update `version`, `download_url`, `created_at` and `description` in `patches-bundle.json` and push to
-   `main`. Everyone who added the source gets the update in Morphe Manager. The bundle is unsigned, so the file
-   must not declare a `public_key`.
+1. Bump `version` in `gradle.properties` and run `./gradlew :patches:generatePatchesList`, then
+   `./gradlew :patches:buildAndroid` **on its own**. Only `buildAndroid` adds the `classes.dex` that Morphe
+   Manager needs on a phone, and any later Gradle run (`build`, `generatePatchesList`, `applyToApk`) can
+   rewrite the .mpp without it.
+2. Copy `patches/build/libs/patches-<version>.mpp` to `releases/` straight away and check it with
+   `unzip -l releases/patches-<version>.mpp | grep classes.dex`.
+3. Commit and push the new file, keeping the previous one for now.
+4. Point `download_url` in `patches-bundle.json` at that commit, not at `main`
+   (`https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/<commit>/releases/patches-<version>.mpp`):
+   GitHub caches files on `main` for several minutes, a commit link never changes. Update `version`,
+   `created_at` and `description`, delete the previous bundle file, and push. The bundle is unsigned, so the
+   file must not declare a `public_key`.
 
 ## Build
 
