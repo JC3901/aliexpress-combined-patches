@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-25T14:00:00",
-  "description": "AliExpress 8.180.1 combined patches v1.0.0: 15 patches combined from hxreborn, johninnld and mben25, including Skip bundle deals.",
-  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/bundles/aliexpress-combined-patches-1.0.0.mpp",
+  "description": "## 1.0.0 (2026-11-25)\n\nFirst release: 15 patches for AliExpress 8.180.1, combined from hxreborn, johninnld and mben25, plus a new **Skip bundle deals** patch.",
+  "download_url": "https://raw.githubusercontent.com/JC3901/aliexpress-combined-patches/main/releases/patches-1.0.0.mpp",
   "version": "1.0.0"
 }

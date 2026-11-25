@@ -36,6 +36,6 @@ tasks.register<JavaExec>("applyToApk") {
     maxHeapSize = "6g"
     args = listOf(
         providers.gradleProperty("apk").get(),
-        tasks.named<Jar>("jar").get().archiveFile.get().asFile.absolutePath,
+        providers.gradleProperty("mpp").orNull ?: tasks.named<Jar>("jar").get().archiveFile.get().asFile.absolutePath,
     ) + (providers.gradleProperty("only").orNull?.split(",") ?: emptyList())
 }
