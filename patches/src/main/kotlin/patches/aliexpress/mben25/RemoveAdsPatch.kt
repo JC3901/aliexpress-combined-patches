@@ -5,6 +5,7 @@
 package patches.aliexpress.mben25
 
 import patches.aliexpress.ALIEXPRESS
+import patches.aliexpress.skipPatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
@@ -42,6 +43,8 @@ val removeAdsPatch = bytecodePatch(
     compatibleWith(ALIEXPRESS)
 
     execute {
-        HouyiLayerManagerTryOpenFingerprint.method.addInstructions(0, "return-void")
+        val method = HouyiLayerManagerTryOpenFingerprint.methodOrNull
+            ?: return@execute skipPatch("Block marketing pop-up layers", "pop-layer manager not found")
+        method.addInstructions(0, "return-void")
     }
 }

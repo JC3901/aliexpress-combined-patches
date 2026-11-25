@@ -18,3 +18,11 @@ internal fun BytecodePatchContext.detectAliExpressBuild() {
 
 /** Returns [renamed] on the renamed build and [original] on the 8.180.0-style build. */
 internal fun <T> ae(renamed: T, original: T): T = if (AliExpressBuild.renamed) renamed else original
+
+/**
+ * Logs that an optional patch found nothing to change in this AliExpress build. Optional patches
+ * call this and return instead of throwing, so one of them can never stop the whole patching run.
+ */
+internal fun skipPatch(patch: String, reason: String) {
+    java.util.logging.Logger.getLogger(patch).warning("$patch skipped: $reason")
+}

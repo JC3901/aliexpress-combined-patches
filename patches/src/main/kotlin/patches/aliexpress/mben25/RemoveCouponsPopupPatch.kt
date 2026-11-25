@@ -7,9 +7,9 @@ package patches.aliexpress.mben25
 import patches.aliexpress.ALIEXPRESS
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
+import patches.aliexpress.skipPatch
 
 /**
  * In 8.162.8 the app decided locally (`CouponFloorFatigueManager.isFatigued`) whether the
@@ -52,7 +52,11 @@ val removeCouponsPopupPatch = bytecodePatch(
             ImageSearchCouponCountFingerprint.methodOrNull,
             SearchCouponCountFingerprint.methodOrNull,
         )
-        if (methods.isEmpty()) throw PatchException("AliExpress coupon floor counters not found")
+        if (methods.isEmpty()) {
+            // Not every AliExpress build has these counters where this patch looks. Skip rather than
+            // fail, so one optional patch never stops the whole patching run.
+            return@execute skipPatch("Remove coupons popup", "coupon counters not found")
+        }
         methods.forEach { method ->
             method.addInstructions(
                 0,

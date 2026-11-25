@@ -5,6 +5,7 @@
 package patches.aliexpress.mben25
 
 import patches.aliexpress.ALIEXPRESS
+import patches.aliexpress.skipPatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -55,7 +56,9 @@ val disablePromotionsNotificationsPatch = bytecodePatch(
     compatibleWith(ALIEXPRESS)
 
     execute {
-        BuildPushNotificationFingerprint.method.apply {
+        val method = BuildPushNotificationFingerprint.methodOrNull
+            ?: return@execute skipPatch("Disable promotions notifications", "notification builder not found")
+        method.apply {
             // `.locals 20`: p2 is v22, out of range for a non-range invoke, so copy it first.
             val checks = PROMOTIONAL_MSG_TYPES.joinToString("\n") { type ->
                 """

@@ -9,7 +9,7 @@ package patches.aliexpress.bundles
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.matchSingle
+import patches.aliexpress.skipPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import patches.aliexpress.ALIEXPRESS
 
@@ -44,14 +44,16 @@ val skipBundleDealsPatch = bytecodePatch(
     extendWith("extensions/aliexpress.mpe")
 
     execute {
-        NavOpenUrlFingerprint.matchSingle().method.addInstructions(
+        val urlMethod = NavOpenUrlFingerprint.methodOrNull
+            ?: return@execute skipPatch("Skip bundle deals", "link router not found")
+        urlMethod.addInstructions(
             0,
             """
                 invoke-static/range { p1 .. p1 }, $EXTENSION->rewrite(Ljava/lang/String;)Ljava/lang/String;
                 move-result-object p1
             """,
         )
-        NavOpenUriFingerprint.matchSingle().method.addInstructions(
+        NavOpenUriFingerprint.methodOrNull?.addInstructions(
             0,
             """
                 invoke-static/range { p1 .. p1 }, $EXTENSION->rewrite(Landroid/net/Uri;)Landroid/net/Uri;

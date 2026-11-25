@@ -5,6 +5,7 @@
 package patches.aliexpress.mben25
 
 import patches.aliexpress.ALIEXPRESS
+import patches.aliexpress.skipPatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
@@ -35,7 +36,9 @@ val removeAffiliateTrackingPatch = bytecodePatch(
 
     execute {
         // `.locals 4`.
-        EnableFirebaseLogEventFingerprint.method.addInstructions(
+        val method = EnableFirebaseLogEventFingerprint.methodOrNull
+            ?: return@execute skipPatch("Remove affiliate tracking", "tracking switch not found")
+        method.addInstructions(
             0,
             """
                 const/4 v0, 0x0
