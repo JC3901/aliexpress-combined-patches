@@ -39,3 +39,9 @@ tasks.register<JavaExec>("applyToApk") {
         providers.gradleProperty("mpp").orNull ?: tasks.named<Jar>("jar").get().archiveFile.get().asFile.absolutePath,
     ) + (providers.gradleProperty("only").orNull?.split(",") ?: emptyList())
 }
+
+// buildAndroid must run last: a later plain `build` rewrites the .mpp without classes.dex,
+// and Morphe Manager then loads 0 patches.
+tasks.matching { it.name == "buildAndroid" }.configureEach {
+    mustRunAfter("build", "generatePatchesList")
+}
