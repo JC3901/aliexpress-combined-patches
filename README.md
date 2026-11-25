@@ -40,7 +40,7 @@ breaks.
    Manager add `https://github.com/JC3901/aliexpress-combined-patches` as a source. If you added the
    hxreborn, johninnld or mben25 sources before, turn their AliExpress patches off, so no patch is applied twice.
 3. Download **AliExpress 8.180.1** from
-   [APKMirror](https://www.apkmirror.com/apk/alibaba-mobile/aliexpress-smarter-shopping-better-living/). Pick
+   [APKMirror](https://www.apkmirror.com/apk/alibaba-mobile/aliexpress-shopping-app/). Pick
    the file in Morphe Manager.
 4. Morphe Manager patches with all the patches on. To leave some out, first turn on Settings > **Expert mode** in
    Morphe Manager; you then choose the patches before patching.
